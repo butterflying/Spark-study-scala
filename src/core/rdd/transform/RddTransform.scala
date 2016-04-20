@@ -9,8 +9,8 @@ import org.apache.spark.SparkContext
 object RddTransform {
   def main(args: Array[String]): Unit = {
     //sortByKey
-    //join
-    cogroup()
+    join
+    //cogroup()
   }
 
   /**
@@ -37,7 +37,12 @@ object RddTransform {
     val stuRDD = sc.parallelize(stuList)
     val scoreRDD = sc.parallelize(scoreList)
 
-    stuRDD.join(scoreRDD).foreach(t => println(t._1 + "\t" + t._2._1 + "\t" + t._2._2))
+    stuRDD.join(scoreRDD).foreach(t => {
+      println("student id:" + t._1)
+      println("student name:" + t._2._1)
+      println("student scores:" + t._2._2)
+      println("==========================")
+    })
 
   }
 
@@ -67,6 +72,7 @@ object RddTransform {
       println("student id:" + t._1)
       println("student name:" + t._2._1)
       println("student scores:" + t._2._2)
+      println("==========================")
     })
   }
 }
