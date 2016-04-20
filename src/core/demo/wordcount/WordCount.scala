@@ -1,4 +1,4 @@
-package core.wordcount
+package core.demo.wordcount
 
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
